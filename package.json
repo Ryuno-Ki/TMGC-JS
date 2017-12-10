@@ -4,7 +4,9 @@
   "description": "A little Tamagotchi Simulator for Firefox OS",
   "main": "/src/index.js",
   "scripts": {
-    "test": "mocha test"
+    "rollup:test": "rollup -c",
+    "pretest": "npm run rollup:test",
+    "test": "mocha -b --ui bdd --r chai/register-expect test/specs/*Spec.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +29,8 @@
     "http-server": "0.10.0",
     "js-fixtures": "1.5.3",
     "matchdep": "2.0.0",
-    "mocha": "4.0.1"
+    "mocha": "4.0.1",
+    "rollup": "0.52.1"
   },
   "dependencies": {}
 }

@@ -1,24 +1,52 @@
-describe("User interface", function() {
-    describe("settings menu", function() {
-        // TODO: figure out, how to make before() resp. beforeEach() work
-        // then put menu creation there
-        it("should show the time spent with this pet", function() {
-            var menu = new Menu();
-            expect(menu.time).to.be.above(0);
-        });
+const chai = require('chai');
+const expect = chai.expect;
 
-        it("should let the user turn of sound", function() {
-            var menu = new Menu();
-            expect(menu.sound).to.be.ok;
-            menu.toggleSound();
-            expect(menu.sound).not.to.be.ok;
-        });
+const Pet = require('../petModel').Pet;
 
-        xit("should let the user turn of music", function() {
-            var menu = new Menu();
-            expect(menu.music).to.be.ok;
-            menu.toggleSound();
-            expect(menu.music).not.to.be.ok;
-        });
+describe('Pet', () => {
+  it('has a name', () => {
+    const name = 'Waldo';
+    const pet = new Pet(name);
+    expect(pet.name).to.equal(name);
+  });
+
+  describe('when created', () => {
+    beforeEach(() => {
+      this.pet = new Pet('Waldo');
+    })
+
+    it('has an age of 0', () => {
+      expect(this.pet.age).to.equal(0);
     });
+
+    it('has a sex', () => {
+      expect(this.pet.sex).to.be.oneOf(['male', 'female']);
+    });
+
+    it('is hungry', () => {
+      expect(this.pet.isHungry()).to.be.true;
+    });
+
+    describe('after fed', () => {
+      it('is no longer hungry', () => {
+        const foodMock = { nutrition: 25 };
+        expect(this.pet.isHungry()).to.be.true;
+        this.pet.eat(foodMock);
+        expect(this.pet.isHungry()).to.be.false;
+      });
+    });
+
+    describe('after poo', () => {
+      beforeEach(() => {
+        const foodMock = { nutrition: 25 };
+        this.pet.eat(foodMock);
+      });
+
+      it('is hungry again', () => {
+        expect(this.pet.isHungry()).to.be.false;
+        this.pet.poo();
+        expect(this.pet.isHungry()).to.be.true;
+      });
+    });
+  });
 });
