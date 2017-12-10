@@ -1,18 +1,16 @@
-import { join } from 'path';
+import { env } from 'process';
 
-const plugins = [];
+import * as devConfig from './rollup.config.dev';
+import * as testConfig from './rollup.config.test';
 
-export default [
-  'food',
-  'pet'
-].map((filename) => {
-  return {
-    input: join(__dirname, 'src', 'js', `${filename}.js`),
-    output: {
-      file: join(__dirname, 'test', `${filename}Model.js`),
-      format: 'cjs',
-      name: 'App',
-    },
-    plugins: plugins
-  };
-});
+let config;
+
+switch (env.NODE_ENV) {
+  case 'TEST':
+    config = testConfig;
+    break;
+  default:
+    config = devConfig;
+}
+
+export default config.default;
