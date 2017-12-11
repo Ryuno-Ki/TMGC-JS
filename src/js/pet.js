@@ -1,12 +1,48 @@
 import { Avatar } from './avatar'
 
 export class Pet {
-  constructor (name) {
-    this.name = name
+  static serialise () {
+    return JSON.stringify({
+      hungerLevel: this.hungerLevel,
+      level: this.level,
+      name: this.name,
+      sex: this.sex
+    })
+  }
 
-    this.level = 0
-    this.sex = this._setSex()
+  static deserialise (data) {
+    const state = JSON.parse(data)
+    return new Pet(state)
+  }
+
+  static get initialState () {
+    return {
+      hungerLevel: 50,
+      level: 0,
+      name: 'Waldo',
+      sex: Pet._setSex()
+    }
+  }
+
+  /**
+   * Pick sex at random on initialisation.
+   * @private
+   * @returns {string} sex
+   */
+  static _setSex () {
+    const sex = ['male', 'female']
+    const index = Math.floor(Math.random() * sex.length)
+    return sex[index]
+  }
+
+  constructor (state) {
+    if (!state) { state = Pet.initialState }
+    this.name = state.name
+
+    this.level = state.level
+    this.sex = state.sex
     this._bornAt = new Date()
+    this._hungerLevel = state.hungerLevel
   }
 
   /**
@@ -33,10 +69,6 @@ export class Pet {
   }
 
   get hungerLevel () {
-    const defaultHungerLevel = 50
-    if (typeof this._hungerLevel === 'undefined') {
-      this._hungerLevel = defaultHungerLevel
-    }
     return this._hungerLevel
   }
 
@@ -52,17 +84,6 @@ export class Pet {
     } else {
       this._hungerLevel = current
     }
-  }
-
-  /**
-   * Pick sex at random on initialisation.
-   * @private
-   * @returns {string} sex
-   */
-  _setSex () {
-    const sex = ['male', 'female']
-    const index = Math.floor(Math.random() * sex.length)
-    return sex[index]
   }
 }
 

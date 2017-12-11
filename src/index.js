@@ -10,17 +10,16 @@ const app = choo()
 
 app.use((state, emitter) => {
   state.food = null
-  state.pet = new Pet('Guido')
+  state.pet = new Pet()
   state.timeoutHandlers = {}
 
-  emitter.on('food:aten', () => {
+  emitter.on('food:eaten', () => {
     state.food = null
     emitter.emit('render')
   })
 
   emitter.on('pet:feed', (event) => {
-    state.food = event.meal
-    state.pet.eat(event.meal)
+    state.food = event.type
     emitter.emit('render')
   })
 

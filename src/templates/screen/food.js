@@ -1,10 +1,13 @@
 import html from 'choo/html'
 
+import { Meat } from '../../js/food'
+
 export const render = (context, emit) => {
   const food = context.food
 
   const eat = (food) => {
-    const identifier = 'food:aten'
+    context.pet.eat(new Meat())
+    const identifier = 'food:eaten'
     const oldHandler = context.timeoutHandlers[ identifier ]
     if (oldHandler) { clearTimeout(oldHandler) }
 

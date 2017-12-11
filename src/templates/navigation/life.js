@@ -1,12 +1,10 @@
 import html from 'choo/html'
 
-import { Meat } from '../../js/food'
-
 export const render = (context, emit) => {
   const pet = context.pet
 
   const feed = () => {
-    emit('pet:feed', { meal: new Meat() })
+    emit('pet:feed', { type: 'bread' })
   }
 
   return html`
