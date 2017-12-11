@@ -1,8 +1,13 @@
 import html from 'choo/html'
 
-import { render as renderAnimal } from './pet'
+import { render as renderTopNavigation } from './top-navigation'
+import { render as renderScreen } from './screen'
 
 export const render = (context, emitter) => {
-  const pet = context.pet
-  return html`${renderAnimal({ pet }, emitter)}`
+  return html`
+    <div class="app">
+      ${renderTopNavigation(context, emitter)}
+      ${renderScreen(context, emitter)}
+    </div>
+  `
 }

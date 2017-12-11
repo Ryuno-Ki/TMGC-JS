@@ -8,6 +8,7 @@ import livereload from 'rollup-plugin-livereload';
 import builtins from 'rollup-plugin-node-builtins';
 import globals from 'rollup-plugin-node-globals';
 import resolve from 'rollup-plugin-node-resolve';
+import scss from 'rollup-plugin-scss';
 import serve from 'rollup-plugin-serve';
 
 const copyOptions = {
@@ -18,6 +19,7 @@ const copyOptions = {
   "src/img/chars/02/main.gif": "dist/img/chars/02/main.gif",
   "src/img/chars/03/main.gif": "dist/img/chars/03/main.gif",
   "src/img/chars/04/main.gif": "dist/img/chars/04/main.gif",
+  "src/img/other/food.gif": "dist/img/other/food.gif",
 };
 
 const coverageOptions = {
@@ -30,6 +32,10 @@ const livereloadOptions = {
   watch: 'dist'
 };
 
+const scssOptions = {
+  output: 'dist/app.css'
+};
+
 const serveOptions = {
   contentBase: 'dist',
   port: 8080,
@@ -37,6 +43,7 @@ const serveOptions = {
 
 const plugins = [
   copy(copyOptions),
+  scss(scssOptions),
   globals(),
   builtins(),
   resolve(),
