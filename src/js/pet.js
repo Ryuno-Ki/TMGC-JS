@@ -65,7 +65,10 @@ export class Pet {
   }
 
   get avatar () {
-    return new Avatar(this.level)
+    const avatar = new Avatar(this.level)
+    avatar.x = Math.floor(Math.random() * 80)
+    avatar.y = Math.floor(Math.random() * 80)
+    return avatar
   }
 
   get hungerLevel () {

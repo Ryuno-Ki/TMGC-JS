@@ -1,0 +1,21 @@
+.navigation {
+    min-width: 100%;
+}
+
+.navigation .menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    color: #fefefe;
+    list-style: none;
+}
+
+.sub-menu {
+    display: none;
+}
+
+.menu .menu-item:hover .sub-menu {
+    display: block;
+}

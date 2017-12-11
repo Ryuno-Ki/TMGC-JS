@@ -1,7 +1,6 @@
 import choo from 'choo'
 // import expose from 'choo-devtools'
 
-import './css/main.css'
 import { Pet } from './js/pet'
 import { render as main } from './templates/game'
 
@@ -9,6 +8,7 @@ const app = choo()
 // app.use(expose)
 
 app.use((state, emitter) => {
+  state.canvasWidth = 300
   state.food = null
   state.pet = new Pet()
   state.timeoutHandlers = {}

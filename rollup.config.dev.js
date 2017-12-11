@@ -20,17 +20,21 @@ const copyOptions = {
   "src/img/chars/03/main.gif": "dist/img/chars/03/main.gif",
   "src/img/chars/04/main.gif": "dist/img/chars/04/main.gif",
   "src/img/other/food.gif": "dist/img/other/food.gif",
-};
+}
 
 const coverageOptions = {
   exclude: [
     "test/*.js",
   ]
-};
+}
 
 const livereloadOptions = {
   watch: 'dist'
 };
+
+const resolveOptions = {
+  browser: true
+}
 
 const scssOptions = {
   output: 'dist/app.css'
@@ -46,7 +50,7 @@ const plugins = [
   scss(scssOptions),
   globals(),
   builtins(),
-  resolve(),
+  resolve(resolveOptions),
   commonjs(),
   eslint(),
   coverage(coverageOptions),

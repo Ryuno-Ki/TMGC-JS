@@ -35,14 +35,16 @@ export const render = (context, emit) => {
   grow()
   poo()
 
-  const x = Math.floor(Math.random() * 80) + '%'
-  const y = Math.floor(Math.random() * 80) + '%'
+  const canvasWidth = context.canvasWidth
+  const translationX = canvasWidth * pet.avatar.x / 100
+  const translationY = canvasWidth * pet.avatar.y / 100
+  const translation = `${translationX}px, ${translationY}px`
 
   return html`
     <div class="pet">
       <img src="${pet.avatar.image}"
            alt="hatching"
-           style="top: ${x}; left: ${y}" />
+           style="transform: translate(${translation})" />
     </div>
   `
 }
