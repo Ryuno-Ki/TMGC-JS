@@ -6,13 +6,12 @@
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "rollup:dev": "NODE_ENV=DEV rollup -c",
+    "rollup:dev": "NODE_ENV=DEV rollup -c -w",
     "rollup:test": "NODE_ENV=TEST rollup -c",
     "prestart": "npm run rollup:dev",
     "pretest": "npm run rollup:test",
     "start": "http-server dist",
-    "test": "npm run test:unit",
-    "test:unit": "mocha -b --ui bdd --r chai/register-expect test/specs/*Spec.js"
+    "test": "mocha -b --ui bdd --r chai/register-expect test/specs/*Spec.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,8 @@
   "homepage": "https://github.com/Ryuno-Ki/TMGC-JS",
   "devDependencies": {
     "chai": "4.1.2",
+    "chai-string": "1.4.0",
+    "http-server": "0.10.0",
     "mocha": "4.0.1",
     "rollup": "0.52.1",
     "rollup-plugin-commonjs": "8.2.6",

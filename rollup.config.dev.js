@@ -11,7 +11,10 @@ import resolve from 'rollup-plugin-node-resolve';
 import serve from 'rollup-plugin-serve';
 
 const copyOptions = {
-  "src/index.html": "dist/index.html"
+  "src/index.html": "dist/index.html",
+  "src/img/chars/00/main.gif": "dist/img/chars/00/main.gif",
+  "src/img/chars/00/hatch.gif": "dist/img/chars/00/hatch.gif",
+  "src/img/chars/01/main.gif": "dist/img/chars/01/main.gif",
 };
 
 const coverageOptions = {
@@ -25,7 +28,8 @@ const livereloadOptions = {
 };
 
 const serveOptions = {
-  contentBase: 'dist'
+  contentBase: 'dist',
+  port: 8080,
 };
 
 const plugins = [

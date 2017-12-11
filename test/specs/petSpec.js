@@ -15,6 +15,10 @@ describe('Pet', () => {
       this.pet = new Pet('Waldo');
     })
 
+    it('has an avatar', () => {
+      expect(this.pet.avatar).to.be.an('object').that.has.any.keys('image');
+    });
+
     it('has an age of 0', () => {
       expect(this.pet.age).to.equal(0);
     });

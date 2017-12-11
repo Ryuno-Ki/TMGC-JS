@@ -1,9 +1,11 @@
+import { Avatar } from './avatar';
+
 export class Pet {
   constructor(name) {
     this.name = name;
 
-    this.age = 0;
     this.sex = this._setSex();
+    this._bornAt = new Date();
   }
 
   /**
@@ -19,6 +21,17 @@ export class Pet {
 
   poo() {
     this.hungerLevel += 10;
+  }
+
+  get age() {
+    const now = new Date();
+    const timeSinceBirth = new Date(now - this._bornAt);
+    return timeSinceBirth.getMinutes();
+  }
+
+  get avatar() {
+    const level = this.age;
+    return new Avatar(level);
   }
 
   get hungerLevel() {

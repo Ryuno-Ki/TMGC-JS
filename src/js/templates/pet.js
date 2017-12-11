@@ -1,17 +1,17 @@
-import html from 'choo/html';
+import html from 'choo/html'
 
-import { Meat } from '../food';
+import { Meat } from '../food'
 
 export const render = (context, emit) => {
-  const pet = context.pet;
+  const pet = context.pet
 
   const feed = () => {
-    emit('pet:feed', { meal: new Meat() });
-  };
+    emit('pet:feed', { meal: new Meat() })
+  }
 
   const poo = () => {
-    emit('pet:poo');
-  };
+    emit('pet:poo')
+  }
 
   return html`
     <div class="container">
@@ -32,6 +32,7 @@ export const render = (context, emit) => {
           Poo
         </button>
       </p>
+      <img src="${pet.avatar.image}" alt="hatching" />
     </div>
-  `;
-};
+  `
+}

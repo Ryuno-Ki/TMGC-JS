@@ -3,6 +3,7 @@ import { join } from 'path';
 const plugins = [];
 
 export default [
+  'avatar',
   'food',
   'pet'
 ].map((filename) => {
