@@ -23,7 +23,7 @@ export class Pet {
 
   get hungerLevel() {
     const defaultHungerLevel = 50;
-    if (!this._hungerLevel) {
+    if (typeof this._hungerLevel === "undefined") {
       this._hungerLevel = defaultHungerLevel;
     }
     return this._hungerLevel;
@@ -35,17 +35,9 @@ export class Pet {
     const current = this._hungerLevel;
 
     if (updated < current) {
-      if (current - updated < lowerTreshold) {
-        this._hungerLevel = lowerTreshold;
-      } else {
-        this._hungerLevel = current - updated;
-      }
+      this._hungerLevel = (updated <= lowerTreshold) ? lowerTreshold : updated;
     } else if (updated > current) {
-      if (current + updated > upperTreshold) {
-        this._hungerLevel = upperTreshold;
-      } else {
-        this._hungerLevel = current + updated;
-      }
+      this._hungerLevel = (updated >= upperTreshold) ? upperTreshold : updated;
     } else {
       this._hungerLevel = current;
     }

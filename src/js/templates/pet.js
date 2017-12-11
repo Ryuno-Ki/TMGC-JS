@@ -19,6 +19,11 @@ export const render = (context, emit) => {
       <p>Age: ${pet.age}</p>
       <p>Sex: ${pet.sex}</p>
       <p>Is hungry? ${pet.isHungry()}</p>
+      <div>
+        <progress value="${pet.hungerLevel}" max="100">
+          ${pet.hungerLevel}
+        </progress>
+      </div>
       <p>
         <button type="button" onclick=${feed}>
           Feed
