@@ -15,6 +15,9 @@ const copyOptions = {
   "src/img/chars/00/main.gif": "dist/img/chars/00/main.gif",
   "src/img/chars/00/hatch.gif": "dist/img/chars/00/hatch.gif",
   "src/img/chars/01/main.gif": "dist/img/chars/01/main.gif",
+  "src/img/chars/02/main.gif": "dist/img/chars/02/main.gif",
+  "src/img/chars/03/main.gif": "dist/img/chars/03/main.gif",
+  "src/img/chars/04/main.gif": "dist/img/chars/04/main.gif",
 };
 
 const coverageOptions = {

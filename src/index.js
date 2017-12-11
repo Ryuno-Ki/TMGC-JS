@@ -12,7 +12,11 @@ app.use((state, emitter) => {
     emitter.emit('render')
   })
 
-  emitter.on('pet:poo', (event) => {
+  emitter.on('pet:grow', () => {
+    emitter.emit('render')
+  })
+
+  emitter.on('pet:poo', () => {
     state.pet.poo()
     emitter.emit('render')
   })
