@@ -79,4 +79,5 @@ tags
 # End of https://www.gitignore.io/api/vim,node
 
 ## Custom
+dist/
 test/*Model.js
