@@ -54,12 +54,14 @@ const plugins = [
   livereload(livereloadOptions),
 ];
 
-export default {
-  input: join(__dirname, 'src', 'index.js'),
-  output: {
-    file: join(__dirname, 'dist', 'app.js'),
-    format: 'iife',
-    name: 'App',
-  },
-  plugins: plugins
-};
+export function getDevConfig() {
+ return {
+    input: join(__dirname, 'src', 'index.js'),
+    output: {
+      file: join(__dirname, 'dist', 'app.js'),
+      format: 'iife',
+      name: 'App',
+    },
+    plugins: plugins
+  };
+}

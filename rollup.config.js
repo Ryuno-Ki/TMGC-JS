@@ -1,16 +1,16 @@
 import { env } from 'process';
 
-import * as devConfig from './rollup.config.dev';
-import * as testConfig from './rollup.config.test';
+import { getDevConfig } from './rollup.config.dev';
+import { getTestConfig } from './rollup.config.test';
 
 let config;
 
 switch (env.NODE_ENV) {
   case 'TEST':
-    config = testConfig;
+    config = getTestConfig();
     break;
   default:
-    config = devConfig;
+    config = getDevConfig();
 }
 
-export default config.default;
+export default config;
