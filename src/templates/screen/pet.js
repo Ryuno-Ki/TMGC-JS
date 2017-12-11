@@ -1,6 +1,6 @@
 import html from 'choo/html'
 
-import { growTimes } from '../js/pet'
+import { growTimes } from '../../js/pet'
 
 export const render = (context, emit) => {
   const pet = context.pet

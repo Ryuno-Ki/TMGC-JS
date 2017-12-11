@@ -1,6 +1,6 @@
 import html from 'choo/html'
 
-import { Meat } from '../js/food'
+import { Meat } from '../../js/food'
 
 export const render = (context, emit) => {
   const pet = context.pet
