@@ -3,7 +3,7 @@ import choo from 'choo'
 
 import './css/main.css'
 import { Pet } from './js/pet'
-import { render as main } from './js/templates/game'
+import { render as main } from './templates/game'
 
 const app = choo()
 // app.use(expose)
