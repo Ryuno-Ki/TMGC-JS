@@ -3,7 +3,6 @@ import { join } from 'path'
 import commonjs from 'rollup-plugin-commonjs'
 import copy from 'rollup-plugin-copy'
 import eslint from 'rollup-plugin-eslint'
-import image from 'rollup-plugin-image'
 import coverage from 'rollup-plugin-istanbul'
 import livereload from 'rollup-plugin-livereload'
 import builtins from 'rollup-plugin-node-builtins'
@@ -11,6 +10,7 @@ import globals from 'rollup-plugin-node-globals'
 import resolve from 'rollup-plugin-node-resolve'
 import scss from 'rollup-plugin-scss'
 import serve from 'rollup-plugin-serve'
+import url from 'rollup-plugin-url'
 
 const copyOptions = {
   'src/index.html': 'dist/index.html',
@@ -32,6 +32,10 @@ const eslintOptions = {
 
 const livereloadOptions = {
   watch: 'dist'
+}
+
+const urlOptions = {
+  include: [ 'src/img/**/*.gif' ]
 }
 
 const resolveOptions = {
@@ -56,12 +60,12 @@ const plugins = [
   commonjs(),
   eslint(eslintOptions),
   coverage(coverageOptions),
-  image(),
+  url(urlOptions),
   serve(serveOptions),
   livereload(livereloadOptions),
 ]
 
-export function getDevConfig() {
+function getDevConfig() {
  return {
     input: join(__dirname, 'src', 'index.js'),
     output: {
@@ -72,3 +76,5 @@ export function getDevConfig() {
     plugins: plugins
   }
 }
+
+export default getDevConfig()

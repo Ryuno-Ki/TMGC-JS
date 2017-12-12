@@ -15,7 +15,7 @@ export class Avatar {
     ]
 
     this.level = level
-    this.image = images[level].src
+    this.image = images[level]
     this.x = 50
     this.y = 50
   }

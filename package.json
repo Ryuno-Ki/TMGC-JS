@@ -6,11 +6,12 @@
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "rollup:dev": "NODE_ENV=DEV rollup -c -w",
-    "rollup:test": "NODE_ENV=TEST rollup -c",
+    "rollup:dev": "NODE_ENV=DEV rollup -w -c rollup.config.dev.js",
+    "rollup:test": "NODE_ENV=TEST rollup -c rollup.config.test.js",
     "pretest": "npm run rollup:test",
     "start": "npm run rollup:dev",
-    "test": "mocha -b --ui bdd --r chai/register-expect test/specs/*Spec.js"
+    "test": "mocha",
+    "test:coverage": "istanbul check-coverage --statements 85 --branches 70 --functions 100 --lines 90"
   },
   "repository": {
     "type": "git",
@@ -33,12 +34,12 @@
     "chai-string": "1.4.0",
     "choo-devtools": "2.2.0",
     "http-server": "0.10.0",
+    "istanbul": "0.4.5",
     "mocha": "4.0.1",
     "rollup": "0.52.1",
     "rollup-plugin-commonjs": "8.2.6",
     "rollup-plugin-copy": "0.2.3",
     "rollup-plugin-eslint": "4.0.0",
-    "rollup-plugin-image": "1.0.2",
     "rollup-plugin-istanbul": "2.0.0",
     "rollup-plugin-livereload": "0.6.0",
     "rollup-plugin-node-builtins": "2.1.2",
@@ -46,6 +47,7 @@
     "rollup-plugin-node-resolve": "3.0.0",
     "rollup-plugin-scss": "0.4.0",
     "rollup-plugin-serve": "0.4.2",
+    "rollup-plugin-url": "1.3.0",
     "standard": "10.0.3"
   },
   "dependencies": {

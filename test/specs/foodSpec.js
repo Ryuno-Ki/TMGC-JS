@@ -4,13 +4,13 @@ const expect = chai.expect;
 const food = require('../foodModel');
 
 describe('Food', () => {
-  describe('meat', () => {
+  describe('bread', () => {
     beforeEach(() => {
-      this.meat = new food.Meat();
+      this.bread = new food.Bread();
     });
 
     it('has high nutrition', () => {
-      expect(this.meat.nutrition).to.be.above(20);
+      expect(this.bread.nutrition).to.be.above(20);
     });
   });
 });

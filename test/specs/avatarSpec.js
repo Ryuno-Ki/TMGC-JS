@@ -19,7 +19,6 @@ describe('Avatar', () => {
 
     it('has an image attached', () => {
       expect(this.avatar.image).to.be.a('string');
-      expect(this.avatar.image).to.endsWith('main.gif');
     });
   });
 });

@@ -1,0 +1,5 @@
+--bail
+--ui bdd
+--require chai/register-expect
+--reporter istanbul.reporter.js
+--recursive

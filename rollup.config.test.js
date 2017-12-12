@@ -1,8 +1,16 @@
-import { join } from 'path';
+import { join } from 'path'
 
-const plugins = [];
+import url from 'rollup-plugin-url'
 
-export function getTestConfig() {
+const urlOptions = {
+  include: [ 'src/img/**/*.gif' ]
+}
+
+const plugins = [
+  url(urlOptions)
+]
+
+function getTestConfig() {
   return [
     'avatar',
     'food',
@@ -16,6 +24,8 @@ export function getTestConfig() {
         name: 'App',
       },
       plugins: plugins
-    };
-  });
+    }
+  })
 }
+
+export default getTestConfig()
