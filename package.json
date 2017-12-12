@@ -4,6 +4,7 @@
   "description": "A little Tamagotchi Simulator for Firefox OS",
   "main": "/src/index.js",
   "scripts": {
+    "build": "NODE_ENV=PROD rollup -c rollup.config.prod.js",
     "lint": "standard",
     "lint:fix": "standard --fix",
     "rollup:dev": "NODE_ENV=DEV rollup -w -c rollup.config.dev.js",
