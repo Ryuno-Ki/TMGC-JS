@@ -13,7 +13,7 @@ export const render = (context, emit) => {
       <progress value="${pet.hungerLevel}" max="100">
         ${pet.hungerLevel}
       </progress>
-      <button type="button" onclick=${feed}>
+      <button type="button" onclick="${feed}">
         Feed
       </button>
     </div>

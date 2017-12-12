@@ -12,6 +12,7 @@ import '../css/navigation.css'
 import { string2svg } from './utils/string2svg'
 import { render as renderNavigationItemLife } from './navigation/life'
 import { render as renderNavigationItemStats } from './navigation/stats'
+import { render as renderNavigationItemToilet } from './navigation/toilet'
 
 export const render = (context, emitter) => {
   const cutleryIcon = string2svg(fontawesome.icon(faUtensils).html[0])
@@ -43,6 +44,9 @@ export const render = (context, emitter) => {
           <a href="./?nav=toilet">
             ${tintIcon}
           </a>
+          <ul class="sub-menu">
+            <li>${renderNavigationItemToilet(context, emitter)}</li>
+          </ul>
         </li>
         <li class="menu-item${nav === 'play' ? ' active' : ''}">
           <a href="./?nav=play">

@@ -6,6 +6,14 @@ export const getPetPosition = (state) => {
   return { x, y }
 }
 
+export const getPooPosition = (state) => {
+  const pet = getPetPosition(state)
+  const offset = { x: 10, y: 10 }
+  const x = pet.x + offset.x
+  const y = pet.y + offset.y
+  return { x, y }
+}
+
 export const getFoodPosition = (state) => {
   const pet = getPetPosition(state)
   const offset = { x: 10, y: 10 }

@@ -12,6 +12,7 @@ app.use((state, emitter) => {
   state.canvasWidth = 300
   state.food = null
   state.pet = new Pet()
+  state.poo = 0
   state.timeoutHandlers = {}
 
   emitter.on('pushState', () => {
@@ -21,6 +22,11 @@ app.use((state, emitter) => {
 
   emitter.on('food:eaten', () => {
     state.food = null
+    emitter.emit('render')
+  })
+
+  emitter.on('pet:cleaned', () => {
+    state.poo = 0
     emitter.emit('render')
   })
 
@@ -35,6 +41,7 @@ app.use((state, emitter) => {
 
   emitter.on('pet:poo', () => {
     state.pet.poo()
+    state.poo++
     emitter.emit('render')
   })
 })
