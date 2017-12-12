@@ -16,6 +16,6 @@
     display: none;
 }
 
-.menu .menu-item:hover .sub-menu {
+.menu .menu-item.active .sub-menu {
     display: block;
 }

@@ -1,6 +1,8 @@
-export class Meat {
+import image from '../img/other/food.gif'
+
+export class Bread {
   constructor () {
     this.nutrition = 25
-    this.image = '/img/other/food.gif'
+    this.image = image.src
   }
 }

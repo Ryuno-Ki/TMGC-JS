@@ -8,9 +8,8 @@
     "lint:fix": "standard --fix",
     "rollup:dev": "NODE_ENV=DEV rollup -c -w",
     "rollup:test": "NODE_ENV=TEST rollup -c",
-    "prestart": "npm run rollup:dev",
     "pretest": "npm run rollup:test",
-    "start": "http-server dist",
+    "start": "npm run rollup:dev",
     "test": "mocha -b --ui bdd --r chai/register-expect test/specs/*Spec.js"
   },
   "repository": {
@@ -39,6 +38,7 @@
     "rollup-plugin-commonjs": "8.2.6",
     "rollup-plugin-copy": "0.2.3",
     "rollup-plugin-eslint": "4.0.0",
+    "rollup-plugin-image": "1.0.2",
     "rollup-plugin-istanbul": "2.0.0",
     "rollup-plugin-livereload": "0.6.0",
     "rollup-plugin-node-builtins": "2.1.2",

@@ -2,6 +2,7 @@ import choo from 'choo'
 // import expose from 'choo-devtools'
 
 import { Pet } from './js/pet'
+import { getTitle } from './js/utils/title'
 import { render as main } from './templates/game'
 
 const app = choo()
@@ -12,6 +13,11 @@ app.use((state, emitter) => {
   state.food = null
   state.pet = new Pet()
   state.timeoutHandlers = {}
+
+  emitter.on('pushState', () => {
+    const title = getTitle(state.query.nav)
+    emitter.emit('DOMTitleChange', title)
+  })
 
   emitter.on('food:eaten', () => {
     state.food = null

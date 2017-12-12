@@ -1,6 +1,7 @@
 import html from 'choo/html'
 
 import { growTimes } from '../../js/pet'
+import { getPetPosition } from '../../js/utils/position'
 
 export const render = (context, emit) => {
   const pet = context.pet
@@ -35,10 +36,8 @@ export const render = (context, emit) => {
   grow()
   poo()
 
-  const canvasWidth = context.canvasWidth
-  const translationX = canvasWidth * pet.avatar.x / 100
-  const translationY = canvasWidth * pet.avatar.y / 100
-  const translation = `${translationX}px, ${translationY}px`
+  const coordinates = getPetPosition(context)
+  const translation = `${coordinates.x}px, ${coordinates.y}px`
 
   return html`
     <div class="pet">
