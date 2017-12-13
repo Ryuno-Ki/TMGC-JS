@@ -1,8 +1,6 @@
 import html from 'choo/html'
 
 export const render = (context, emit) => {
-  const pet = context.pet
-
   const cleanup = () => {
     emit('pet:cleaned')
   }

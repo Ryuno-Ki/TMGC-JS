@@ -45,6 +45,6 @@ app.use((state, emitter) => {
     emitter.emit('render')
   })
 })
-app.route('/', main)
+app.route('/:basepath', main)
 const tree = app.start()
 document.body.appendChild(tree)
