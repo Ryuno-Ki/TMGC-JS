@@ -2,7 +2,8 @@ import html from 'choo/html'
 
 export const render = (context, emit) => {
   const cleanup = () => {
-    emit('pet:cleaned')
+    context.toilet = true
+    emit('pet:clean')
   }
 
   return html`

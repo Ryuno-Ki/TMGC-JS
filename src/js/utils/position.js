@@ -21,3 +21,9 @@ export const getFoodPosition = (state) => {
   const y = pet.y - offset.y
   return { x, y }
 }
+
+export const getToiletPosition = (state) => {
+  const x = state.canvasWidth
+  const y = 0
+  return { x, y }
+}

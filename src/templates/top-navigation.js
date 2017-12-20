@@ -15,10 +15,22 @@ import { render as renderNavigationItemStats } from './navigation/stats'
 import { render as renderNavigationItemToilet } from './navigation/toilet'
 
 export const render = (context, emitter) => {
-  const cutleryIcon = string2svg(fontawesome.icon(faUtensils).html[0])
-  const dashboardIcon = string2svg(fontawesome.icon(faTachometerAlt).html[0])
-  const gamepadIcon = string2svg(fontawesome.icon(faGamepad).html[0])
-  const tintIcon = string2svg(fontawesome.icon(faTint).html[0])
+  const cutleryIcon = string2svg(
+    fontawesome.icon(faUtensils, {
+      classes: [ 'fa-2x' ]
+    }).html[0])
+  const dashboardIcon = string2svg(
+    fontawesome.icon(faTachometerAlt, {
+      classes: [ 'fa-2x' ]
+    }).html[0])
+  const gamepadIcon = string2svg(
+    fontawesome.icon(faGamepad, {
+      classes: [ 'fa-2x' ]
+    }).html[0])
+  const tintIcon = string2svg(
+    fontawesome.icon(faTint, {
+      classes: [ 'fa-2x' ]
+    }).html[0])
   const nav = context.query.nav
 
   return html`

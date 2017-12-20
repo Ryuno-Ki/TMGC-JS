@@ -2,6 +2,7 @@
     background-color: #fefefe;
     min-height: 50vh;
     min-width: 100%;
+    overflow: hidden;
 }
 
 .pet {

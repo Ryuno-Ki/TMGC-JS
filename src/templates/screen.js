@@ -5,8 +5,10 @@ import '../css/canvas.css'
 import { render as renderFood } from './screen/food'
 import { render as renderAnimal } from './screen/pet'
 import { render as renderPoo } from './screen/poo'
+import { render as renderToilet } from './screen/toilet'
 
 export const render = (context, emitter) => {
+  const canvasHeight = context.canvasHeight
   const canvasWidth = context.canvasWidth
 
   const collapseNavigation = () => {
@@ -15,10 +17,11 @@ export const render = (context, emitter) => {
 
   return html`
     <div class="screen"
-         style="min-width: ${canvasWidth}px"
+         style="height: ${canvasHeight}px; width: ${canvasWidth}px"
          onclick="${collapseNavigation}">
       ${renderFood(context, emitter)}
       ${renderPoo(context, emitter)}
+      ${renderToilet(context, emitter)}
       ${renderAnimal(context, emitter)}
     </div>
   `

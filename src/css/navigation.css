@@ -8,7 +8,6 @@
     flex-wrap: wrap;
     justify-content: space-around;
 
-    color: #fefefe;
     list-style: none;
 }
 
@@ -18,4 +17,8 @@
 
 .menu .menu-item.active .sub-menu {
     display: block;
+}
+
+.menu-item a {
+    color: #fefefe;
 }

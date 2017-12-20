@@ -9,10 +9,12 @@ const app = choo()
 // app.use(expose)
 
 app.use((state, emitter) => {
+  state.canvasHeight = 300
   state.canvasWidth = 300
   state.food = null
   state.pet = new Pet()
   state.poo = 0
+  state.toilet = null
   state.timeoutHandlers = {}
 
   emitter.on('pushState', () => {
@@ -25,8 +27,13 @@ app.use((state, emitter) => {
     emitter.emit('render')
   })
 
-  emitter.on('pet:cleaned', () => {
+  emitter.on('pet:clean', () => {
     state.poo = 0
+    emitter.emit('render')
+  })
+
+  emitter.on('pet:cleaned', () => {
+    state.toilet = null
     emitter.emit('render')
   })
 
