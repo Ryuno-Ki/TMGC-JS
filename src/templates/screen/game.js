@@ -1,6 +1,7 @@
 import html from 'choo/html'
 
 import { Game } from '../../js/game'
+import { emitAfter } from '../../js/utils/emitter'
 import { getGamePosition } from '../../js/utils/position'
 
 export const render = (context, emit) => {
@@ -8,14 +9,13 @@ export const render = (context, emit) => {
 
   const play = (game) => {
     context.pet.play(game)
-    const identifier = 'game:played'
-    const oldHandler = context.timeoutHandlers[ identifier ]
-    if (oldHandler) { clearTimeout(oldHandler) }
 
-    const handler = setTimeout(() => {
-      emit(identifier)
-    }, 3000)
-    context.timeoutHandlers[ identifier ] = handler
+    emitAfter({
+      state: context,
+      identifier: 'game:played',
+      delay: 3000,
+      emit: emit
+    })
   }
 
   if (game) {

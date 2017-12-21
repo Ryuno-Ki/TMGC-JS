@@ -1,21 +1,19 @@
 import html from 'choo/html'
 
 import { Bread } from '../../js/food'
+import { emitAfter } from '../../js/utils/emitter'
 import { getFoodPosition } from '../../js/utils/position'
 
 export const render = (context, emit) => {
   const food = context.food ? new Bread() : null
 
   const eat = (food) => {
-    context.pet.eat(food)
-    const identifier = 'food:eaten'
-    const oldHandler = context.timeoutHandlers[ identifier ]
-    if (oldHandler) { clearTimeout(oldHandler) }
-
-    const handler = setTimeout(() => {
-      emit(identifier)
-    }, 3000)
-    context.timeoutHandlers[ identifier ] = handler
+    emitAfter({
+      state: context,
+      identifier: 'food:eaten',
+      delay: 3000,
+      emit: emit
+    })
   }
 
   if (food) {

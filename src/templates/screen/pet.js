@@ -1,48 +1,37 @@
 import html from 'choo/html'
 
 import { growTimes } from '../../js/pet'
+import { emitAfter } from '../../js/utils/emitter'
 import { getPetPosition } from '../../js/utils/position'
 
 export const render = (context, emit) => {
   const pet = context.pet
 
   const grow = () => {
-    const level = pet.level
-    const delay = growTimes[level]
-
-    const identifier = 'pet:grow'
-    const oldHandler = context.timeoutHandlers[ identifier ]
-    if (oldHandler) { clearTimeout(oldHandler) }
-
-    const handler = setTimeout(() => {
-      pet.grow()
-      emit(identifier)
-    }, delay)
-    context.timeoutHandlers[ identifier ] = handler
+    emitAfter({
+      state: context,
+      identifier: 'pet:grow',
+      delay: growTimes[ pet.level ],
+      emit: emit
+    }, pet.grow.bind(pet))
   }
 
   const poo = () => {
-    const delay = Math.floor(10 * 1000 * Math.random())
-    const identifier = 'pet:poo'
-    const oldHandler = context.timeoutHandlers[ identifier ]
-    if (oldHandler) { clearTimeout(oldHandler) }
-
-    const handler = setTimeout(() => {
-      emit(identifier)
-    }, delay)
-    context.timeoutHandlers[ identifier ] = handler
+    emitAfter({
+      state: context,
+      identifier: 'pet:poo',
+      delay: Math.floor(10 * 1000 * Math.random()),
+      emit: emit
+    })
   }
 
   const bored = () => {
-    const delay = Math.floor(5 * 1000 * Math.random())
-    const identifier = 'pet:bored'
-    const oldHandler = context.timeoutHandlers[ identifier ]
-    if (oldHandler) { clearTimeout(oldHandler) }
-
-    const handler = setTimeout(() => {
-      emit(identifier)
-    }, delay)
-    context.timeoutHandlers[ identifier ] = handler
+    emitAfter({
+      state: context,
+      identifier: 'pet:bored',
+      delay: Math.floor(5 * 1000 * Math.random()),
+      emit: emit
+    })
   }
 
   grow()
