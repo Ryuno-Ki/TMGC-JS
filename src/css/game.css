@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
     min-height: 100vh;
     max-width: 80%;
@@ -31,4 +31,8 @@ body {
 
 .bottom.navigation {
     order: 3;
+}
+
+progress {
+    display: block;
 }

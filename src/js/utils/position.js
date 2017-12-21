@@ -22,6 +22,12 @@ export const getFoodPosition = (state) => {
   return { x, y }
 }
 
+export const getGamePosition = (state) => {
+  const x = Math.floor(state.canvasWidth * Math.random())
+  const y = 0.25 * state.canvasHeight
+  return { x, y }
+}
+
 export const getToiletPosition = (state) => {
   const x = state.canvasWidth
   const y = 0

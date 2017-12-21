@@ -11,14 +11,64 @@
     list-style: none;
 }
 
-.sub-menu {
-    display: none;
-}
-
-.menu .menu-item.active .sub-menu {
-    display: block;
+.menu-item {
+    position: relative;
 }
 
 .menu-item a {
     color: #fefefe;
+}
+
+.menu-item.active .sub-menu {
+    display: block;
+    position: absolute;
+    top: calc(100% + 0.5em);
+    border: 1px solid #fefefe;
+}
+
+.menu-item:first-of-type .sub-menu::before,
+.menu-item:first-of-type + .menu-item .sub-menu::before,
+.menu-item:first-of-type + .menu-item + .menu-item .sub-menu::after,
+.menu-item:first-of-type + .menu-item + .menu-item + .menu-item .sub-menu::after {
+    display: block;
+    content: " ";
+    position: absolute;
+    top: calc(-0.5em - 1px - 1px);  // self height - border-top - border-bottom
+    border: 1px solid #fefefe;
+    height: 0.5em;
+    width: 0.5em;
+}
+
+.menu-item:first-of-type .sub-menu,
+.menu-item:first-of-type + .menu-item .sub-menu {
+    left: 0;
+}
+
+.menu-item:first-of-type .sub-menu::before,
+.menu-item:first-of-type + .menu-item .sub-menu::before {
+    border-radius: 10% 100% 0 0;
+    left: -1px;  // border-left
+}
+
+.menu-item:first-of-type + .menu-item + .menu-item .sub-menu,
+.menu-item:first-of-type + .menu-item + .menu-item + .menu-item .sub-menu {
+    right: 0;
+}
+
+.menu-item:first-of-type + .menu-item + .menu-item .sub-menu::after,
+.menu-item:first-of-type + .menu-item + .menu-item + .menu-item .sub-menu::after {
+    border-radius: 100% 10% 0 0;
+    right: -1px;  // border-right
+}
+
+.sub-menu {
+    display: none;
+    list-style: none;
+    background-color: #1c1c1c;
+    color: #fefefe;
+    padding: 0.5em;
+    padding-top: 0;
+    width: 50vw;
+    max-width: var(--canvas-width);
+    z-index: 100;
 }

@@ -28,13 +28,26 @@ export const render = (context, emit) => {
     if (oldHandler) { clearTimeout(oldHandler) }
 
     const handler = setTimeout(() => {
-      emit('pet:poo')
+      emit(identifier)
+    }, delay)
+    context.timeoutHandlers[ identifier ] = handler
+  }
+
+  const bored = () => {
+    const delay = Math.floor(5 * 1000 * Math.random())
+    const identifier = 'pet:bored'
+    const oldHandler = context.timeoutHandlers[ identifier ]
+    if (oldHandler) { clearTimeout(oldHandler) }
+
+    const handler = setTimeout(() => {
+      emit(identifier)
     }, delay)
     context.timeoutHandlers[ identifier ] = handler
   }
 
   grow()
   poo()
+  bored()
 
   const coordinates = getPetPosition(context)
   const translation = `${coordinates.x}px, ${coordinates.y}px`

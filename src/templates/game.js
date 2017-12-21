@@ -11,7 +11,7 @@ export const render = (context, emitter) => {
 
   return html`
     <div class="app"
-         style="max-width: ${canvasWidth}px">
+         style="max-width: ${canvasWidth}px; --canvas-width: ${canvasWidth}px">
       ${renderTopNavigation(context, emitter)}
       ${renderBottomNavigation(context, emitter)}
       ${renderScreen(context, emitter)}

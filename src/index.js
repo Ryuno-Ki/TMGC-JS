@@ -12,6 +12,7 @@ app.use((state, emitter) => {
   state.canvasHeight = 300
   state.canvasWidth = 300
   state.food = null
+  state.game = null
   state.pet = new Pet()
   state.poo = 0
   state.toilet = null
@@ -24,6 +25,16 @@ app.use((state, emitter) => {
 
   emitter.on('food:eaten', () => {
     state.food = null
+    emitter.emit('render')
+  })
+
+  emitter.on('game:played', () => {
+    state.game = null
+    emitter.emit('render')
+  })
+
+  emitter.on('pet:bored', () => {
+    state.pet.bored()
     emitter.emit('render')
   })
 
@@ -46,12 +57,18 @@ app.use((state, emitter) => {
     emitter.emit('render')
   })
 
+  emitter.on('pet:play', () => {
+    state.game = 'toy'
+    emitter.emit('render')
+  })
+
   emitter.on('pet:poo', () => {
     state.pet.poo()
     state.poo++
     emitter.emit('render')
   })
 })
+
 app.route('/:basepath', main)
 const tree = app.start()
 document.body.appendChild(tree)

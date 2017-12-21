@@ -13,6 +13,7 @@ import { string2svg } from './utils/string2svg'
 import { render as renderNavigationItemLife } from './navigation/life'
 import { render as renderNavigationItemStats } from './navigation/stats'
 import { render as renderNavigationItemToilet } from './navigation/toilet'
+import { render as renderNavigationItemPlay } from './navigation/play'
 
 export const render = (context, emitter) => {
   const cutleryIcon = string2svg(
@@ -64,6 +65,9 @@ export const render = (context, emitter) => {
           <a href="./?nav=play">
             ${gamepadIcon}
           </a>
+          <ul class="sub-menu">
+            <li>${renderNavigationItemPlay(context, emitter)}</li>
+          </ul>
         </li>
       </ul>
     </div>
