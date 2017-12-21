@@ -8,11 +8,15 @@ export const render = (context, emit) => {
   const food = context.food ? new Bread() : null
 
   const eat = (food) => {
+    context.pet.action = 'eat'
+
     emitAfter({
       state: context,
       identifier: 'food:eaten',
-      delay: 3000,
+      delay: 1000,
       emit: emit
+    }, () => {
+      context.pet.action = null
     })
   }
 

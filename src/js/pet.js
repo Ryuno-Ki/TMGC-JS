@@ -48,6 +48,7 @@ export class Pet {
 
     this.level = state.level
     this.sex = state.sex
+    this._action = null
     this._bornAt = new Date()
     this._happinessLevel = state.happinessLevel
     this._hungerLevel = state.hungerLevel
@@ -81,7 +82,7 @@ export class Pet {
   }
 
   get avatar () {
-    const avatar = new Avatar(this.level)
+    const avatar = new Avatar(this.level, this.action)
     avatar.x = Math.floor(10 + Math.random() * 80)
     avatar.y = Math.floor(10 + Math.random() * 80)
     return avatar

@@ -8,13 +8,18 @@ export const render = (context, emit) => {
   const game = context.game ? new Game() : null
 
   const play = (game) => {
-    context.pet.play(game)
+    const pet = context.pet
+
+    pet.action = 'play'
+    pet.play(game)
 
     emitAfter({
       state: context,
       identifier: 'game:played',
       delay: 3000,
       emit: emit
+    }, () => {
+      pet.action = null
     })
   }
 
